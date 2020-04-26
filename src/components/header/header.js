@@ -1,4 +1,3 @@
-import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components";
@@ -19,6 +18,9 @@ const LogoWrapper = styled.div`
 
 const Logo = styled.h1`
   margin: 0;
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 38px;
 `
 
 const MenuWrapper = styled.div`
