@@ -8,13 +8,14 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle, ThemeProvider } from "styled-components"
 
 import Header from "./header"
 import RobotoMedium from "../assets/fonts/Roboto-Medium.ttf";
 import RobotoBold from "../assets/fonts/Roboto-Bold.ttf";
 import RobotoRegular from "../assets/fonts/Roboto-Regular.ttf";
 import RobotoLight from "../assets/fonts/Roboto-Light.ttf";
+import { lightTheme } from "../common/theme/theme";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -61,13 +62,14 @@ const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyle/>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div>
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-        </footer>
-      </div>
+      <ThemeProvider theme={lightTheme}>
+        <Header siteTitle={data.site.siteMetadata.title} />
+        <div>
+          <main>{children}</main>
+          <footer>
+          </footer>
+        </div>
+      </ThemeProvider>
     </>
   )
 }
