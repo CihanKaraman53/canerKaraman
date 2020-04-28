@@ -8,7 +8,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import { createGlobalStyle, ThemeProvider } from "styled-components"
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components"
 
 import Header from "./header"
 import RobotoMedium from "../assets/fonts/Roboto-Medium.ttf";
@@ -41,11 +41,26 @@ const GlobalStyle = createGlobalStyle`
 
   * {
     box-sizing: border-box;
+    font-family: Roboto;
   }
 
-  h1, h2, h3, h4, h5, h6, p {
+  body {
+    background-color: #EDD1B0;
+  }
+
+  body, h1, h2, h3, h4, h5, h6, p {
     margin:0;
   }
+`
+
+const StyledMain = styled.main`
+  width: 100%;
+  min-height: calc(100vh - 99px);
+`;
+
+const MainWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
 `
 
 const Layout = ({ children }) => {
@@ -64,11 +79,11 @@ const Layout = ({ children }) => {
       <GlobalStyle/>
       <ThemeProvider theme={lightTheme}>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <div>
-          <main>{children}</main>
+        <MainWrapper>
+          <StyledMain>{children}</StyledMain>
           <footer>
           </footer>
-        </div>
+        </MainWrapper>
       </ThemeProvider>
     </>
   )

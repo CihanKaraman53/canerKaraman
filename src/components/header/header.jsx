@@ -11,7 +11,7 @@ const StyledHeader = styled.header`
 
 const HeaderWrapper = styled.div`
   padding: 20px 0 20px 30px;
-  border-bottom: 1px solid #E2E0E0;
+  border-bottom: 1px solid #000;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -43,10 +43,6 @@ const MenuLink = styled(Link)`
 
   ${(props) => {
   }}
-`
-
-const SubscribeButton = styled.button`
-  
 `
 
 const Header = ({ siteTitle }) => (
