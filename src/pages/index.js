@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components";
 import Slider from "react-slick";
+import { Link } from "gatsby";
 import "slick-carousel/slick/slick.css"; 
 
 import Layout from "../components/layout"
@@ -15,7 +16,8 @@ const PromotionWrapper = styled.div`
 
 const SliderWrapper = styled.div`
   padding-top: 113px;
-  margin-bottom: 25px;
+  position: relative;
+  min-height: calc(100vh - 99px);
 `
 
 const TagWrapper = styled.div`
@@ -50,6 +52,42 @@ const PromotionImage = styled.div`
   flex: 3;
   display: flex;
   justify-content: flex-end;
+`
+
+const Blog = styled.div`
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #000;
+  padding: 40px 0;
+
+  &:first-child {
+    border-top: 1px solid #000;
+  }
+`
+
+const BlogContent = styled.div`
+  flex: 2;
+`
+
+const BlogImage = styled.div`
+  flex: 3;
+  display: flex;
+  justify-content: flex-end;
+`
+
+const SearchInput = styled(Input)`
+  position: absolute;
+  bottom: 150px;
+  left: 0px;
+`
+
+const StyledLink = styled(Link)`
+  color: ${(props) => props.theme.primaryColor};
+  text-decoration: none;
+
+  &:visited {
+    color: ${(props) => props.theme.primaryColor};
+  }
 `
 
 const IndexPage = () => (
@@ -131,8 +169,79 @@ const IndexPage = () => (
           </PromotionWrapper>
           </>
         </Slider>
+        <SearchInput placeholder='Search Blog' buttonTitle='Search'/>
       </SliderWrapper>
-      <Input placeholder='Search Blog' buttonTitle='Search'/>
+    </Container>
+    <Container>
+      <Blog>
+        <BlogContent>
+          <TagWrapper>
+            <Tag>#React</Tag>
+            <Tag>#Javascript</Tag>
+          </TagWrapper>
+          <TagWrapper>
+            <PromotionTitle>Ilk React Blog'um</PromotionTitle>
+          </TagWrapper>
+          <TagWrapper>
+            <PromotionDescription>
+              Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit. Maecenas non ante posuere,
+              aliquet nibh gravida, vulputate quam. Morbi et aliquet metus.
+              Nunc dapibus cursus lorem, sit amet laoreet eros varius eget.
+            </PromotionDescription>
+            <StyledLink>Read More</StyledLink>
+          </TagWrapper>
+        </BlogContent>
+        <BlogImage>
+          <img alt='javascript' src={'https://i.picsum.photos/id/356/475/305.jpg'} />
+        </BlogImage>
+      </Blog>
+      <Blog>
+        <BlogContent>
+          <TagWrapper>
+            <Tag>#React</Tag>
+            <Tag>#Javascript</Tag>
+          </TagWrapper>
+          <TagWrapper>
+            <PromotionTitle>Ilk React Blog'um</PromotionTitle>
+          </TagWrapper>
+          <TagWrapper>
+            <PromotionDescription>
+              Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit. Maecenas non ante posuere,
+              aliquet nibh gravida, vulputate quam. Morbi et aliquet metus.
+              Nunc dapibus cursus lorem, sit amet laoreet eros varius eget.
+            </PromotionDescription>
+            <StyledLink>Read More</StyledLink>
+          </TagWrapper>
+        </BlogContent>
+        <BlogImage>
+          <img alt='javascript' src={'https://i.picsum.photos/id/356/475/305.jpg'} />
+        </BlogImage>
+      </Blog>
+      <Blog>
+        <BlogContent>
+          <TagWrapper>
+            <Tag>#React</Tag>
+            <Tag>#Javascript</Tag>
+          </TagWrapper>
+          <TagWrapper>
+            <PromotionTitle>Ilk React Blog'um</PromotionTitle>
+          </TagWrapper>
+          <TagWrapper>
+            <PromotionDescription>
+              Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit. Maecenas non ante posuere,
+              aliquet nibh gravida, vulputate quam. Morbi et aliquet metus.
+              Nunc dapibus cursus lorem, sit amet laoreet eros varius eget.
+            </PromotionDescription>
+            <StyledLink>Read More</StyledLink>
+          </TagWrapper>
+        </BlogContent>
+        <BlogImage>
+          <img alt='javascript' src={'https://i.picsum.photos/id/356/475/305.jpg'} />
+        </BlogImage>
+      </Blog>
     </Container>
   </Layout>
 )

@@ -40,9 +40,6 @@ const MenuLink = styled(Link)`
   padding: 0 5px;
   font-size: 24px;
   color: ${props => props.theme.softBlack};
-
-  ${(props) => {
-  }}
 `
 
 const Header = ({ siteTitle }) => (

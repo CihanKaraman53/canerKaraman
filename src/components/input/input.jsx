@@ -14,6 +14,7 @@ const StyledInput = styled.input`
   width: 275px;
   font-size: 18px;
   padding-left: 20px;
+  padding-right: 10px;
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 `
 
@@ -22,11 +23,11 @@ const StyledButton = styled(Button)`
 
 `
 
-const Input = ({buttonTitle, placeholder}) => {
+const Input = (props) => {
   return(
-    <InputWrapper>
-      <StyledInput placeholder={placeholder}/>
-      <StyledButton isInputButton title={buttonTitle} />
+    <InputWrapper {...props}>
+      <StyledInput placeholder={props.placeholder}/>
+      <StyledButton isInputButton title={props.buttonTitle} />
     </InputWrapper>
   )
 }
