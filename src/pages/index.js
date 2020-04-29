@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Container from "../components/container";
+import Input from "../components/input";
 
 const PromotionWrapper = styled.div`
   display: flex;
@@ -14,6 +15,7 @@ const PromotionWrapper = styled.div`
 
 const SliderWrapper = styled.div`
   padding-top: 113px;
+  margin-bottom: 25px;
 `
 
 const TagWrapper = styled.div`
@@ -130,6 +132,7 @@ const IndexPage = () => (
           </>
         </Slider>
       </SliderWrapper>
+      <Input placeholder='Search Blog' buttonTitle='Search'/>
     </Container>
   </Layout>
 )

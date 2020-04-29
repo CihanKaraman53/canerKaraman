@@ -5,7 +5,7 @@ const StyledButton = styled.button`
   border: 0px;
   width: 155px;
   height: 58px;
-  border-radius: 5px;
+  border-radius: ${(props) => props.isInputButton ? '0' : '5px'};
   font-size: 16px;
   outline: none;
   transition: all .4s ease-in-out;
@@ -27,10 +27,10 @@ const StyledButton = styled.button`
   }}
 `
 
-const Button = ({title}) => {
+const Button = (props) => {
   
   return (
-    <StyledButton>{title}</StyledButton>
+    <StyledButton {...props} isInputButton={props.isInputButton}>{props.title}</StyledButton>
   )
 }
 
