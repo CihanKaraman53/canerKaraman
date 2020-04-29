@@ -8,6 +8,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Container from "../components/container";
 import Input from "../components/input";
+import Button from "../components/button";
 
 const PromotionWrapper = styled.div`
   display: flex;
@@ -88,6 +89,12 @@ const StyledLink = styled(Link)`
   &:visited {
     color: ${(props) => props.theme.primaryColor};
   }
+`
+
+const LoadButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 60px 0; 
 `
 
 const IndexPage = () => (
@@ -242,6 +249,9 @@ const IndexPage = () => (
           <img alt='javascript' src={'https://i.picsum.photos/id/356/475/305.jpg'} />
         </BlogImage>
       </Blog>
+      <LoadButtonWrapper>
+        <Button title='Load more' />
+      </LoadButtonWrapper>
     </Container>
   </Layout>
 )
