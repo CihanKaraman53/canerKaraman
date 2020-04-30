@@ -11,6 +11,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components"
 
 import Header from "./header"
+import Footer from "./footer/footer"
 import RobotoMedium from "../assets/fonts/Roboto-Medium.ttf";
 import RobotoBold from "../assets/fonts/Roboto-Bold.ttf";
 import RobotoRegular from "../assets/fonts/Roboto-Regular.ttf";
@@ -61,7 +62,7 @@ const StyledMain = styled.main`
 const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -81,8 +82,7 @@ const Layout = ({ children }) => {
         <Header siteTitle={data.site.siteMetadata.title} />
         <MainWrapper>
           <StyledMain>{children}</StyledMain>
-          <footer>
-          </footer>
+          <Footer/>
         </MainWrapper>
       </ThemeProvider>
     </>
