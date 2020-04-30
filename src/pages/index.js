@@ -9,6 +9,7 @@ import SEO from "../components/seo"
 import Container from "../components/container";
 import Input from "../components/input";
 import Button from "../components/button";
+import Newsletter from "../components/newsletter/newsletter";
 
 const PromotionWrapper = styled.div`
   display: flex;
@@ -253,6 +254,9 @@ const IndexPage = () => (
         <Button title='Load more' />
       </LoadButtonWrapper>
     </Container>
+    <Newsletter>
+      
+    </Newsletter>
   </Layout>
 )
 
