@@ -7,6 +7,8 @@ const StyledButton = styled.button`
   height: 58px;
   border-radius: ${(props) => props.isInputButton ? '0' : '5px'};
   font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
   outline: none;
   transition: all .4s ease-in-out;
   background-size: 200% 100%;
