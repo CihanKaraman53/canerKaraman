@@ -5,6 +5,7 @@ import Container from "../container";
 
 const StyledFooter = styled.footer`
   padding: 40px 0;
+  border-top: 1px solid ${(props) => props.theme.black};
 `;
 
 const ContactTitle = styled.h4`
@@ -22,7 +23,7 @@ const Footer = () => {
     <StyledFooter>
       <Container>
         <ContactTitle>Contact</ContactTitle>
-        <ContactLabel>Mail Adress: <a href="mailto: karamancaner1995@gmail.com">karamancaner1995@gmail.com</a></ContactLabel>
+        <ContactLabel>Mail: <a href="mailto: karamancaner1995@gmail.com">karamancaner1995@gmail.com</a></ContactLabel>
         <ContactLabel><a target='blank' href="https://github.com/caner-karaman">Github adresim</a></ContactLabel>
         <ContactLabel><a target='blank' href="https://www.linkedin.com/in/caner-k-453a4a122/">Linkedin adresim</a></ContactLabel>
       </Container>
