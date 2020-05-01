@@ -5,6 +5,7 @@ import Container from "../container";
 
 const StyledFooter = styled.footer`
   padding: 40px 0;
+  border-top: 1px solid ${(props) => props.theme.black};
 `;
 
 const ContactTitle = styled.h4`
