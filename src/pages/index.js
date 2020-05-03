@@ -4,8 +4,8 @@ import Slider from "react-slick";
 import { Link } from "gatsby";
 import "slick-carousel/slick/slick.css"; 
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from "../templates/layout"
+import SEO from "../templates/seo"
 import Container from "../components/container";
 import Input from "../components/input";
 import Button from "../components/button";
@@ -101,6 +101,8 @@ const LoadButtonWrapper = styled.div`
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
+    <StyledLink to={'hello'}>Read More</StyledLink>
+
     <Container>
       <SliderWrapper>
         <Slider arrows={false} autoplay autoplaySpeed={3500} speed={700}>

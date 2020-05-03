@@ -6,12 +6,12 @@
  */
 
 import React from "react"
+import {useStaticQuery} from "gatsby"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components"
 
-import Header from "./header"
-import Footer from "./footer/footer"
+import Header from "../components/header"
+import Footer from "../components/footer/footer"
 import RobotoMedium from "../assets/fonts/Roboto-Medium.ttf";
 import RobotoBold from "../assets/fonts/Roboto-Bold.ttf";
 import RobotoRegular from "../assets/fonts/Roboto-Regular.ttf";
@@ -66,20 +66,21 @@ const MainWrapper = styled.div`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
+  query SiteTitleQuery {
+    site {
+      siteMetadata {
+        title
       }
     }
-  `)
+  }
+`)
+  console.log('DATA', data);
 
   return (
     <>
       <GlobalStyle/>
       <ThemeProvider theme={lightTheme}>
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <Header/>
         <MainWrapper>
           <StyledMain>{children}</StyledMain>
           <Footer/>
