@@ -1,50 +1,59 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const path = require(`path`)
+const { createFilePath } = require(`gatsby-source-filesystem`)
 
-const path = require("path")
-
-exports.createPages = async ({ graphql, actions, reporter }) => {
-  // Destructure the createPage function from the actions object
+exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const result = await graphql(`
-    query {
-      allMdx {
-        edges {
-          node {
-            id
-            frontmatter {
-              title
-              path
+  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  return graphql(
+    `
+      {
+        allMdx {
+          edges {
+            node {
+              frontmatter {
+                title
+              }
             }
           }
         }
       }
+    `
+  ).then(result => {
+    if (result.errors) {
+      throw result.errors
     }
-  `)
 
-  if (result.errors) {
-    reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query')
-  }
+    // Create blog posts pages.
+    const posts = result.data.allMdx.edges
 
-  const posts = result.data.allMdx.edges
+    posts.forEach((post, index) => {
+      const previous = index === posts.length - 1 ? null : posts[index + 1].node
+      const next = index === 0 ? null : posts[index - 1].node
 
-  // you'll call `createPage` for each result
-  posts.forEach(({ node }, index) => {
-    console.log('Node', result);
-
-    createPage({
-      // This is the slug you created before
-      // (or `node.frontmatter.slug`)
-      path: node.frontmatter.path,
-      // This component will wrap our MDX content
-      component: path.resolve(`./src/templates/blog-detail.js`),
-      // You can use the values in this context in
-      // our page layout component
-      context: { id: node.id },
+      createPage({
+        path: `blog/${post.node.frontmatter.title}`,
+        component: blogPost,
+        context: {
+          previous,
+          next,
+        },
+      })
     })
+
+    return null
   })
+}
+
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions
+
+  if (node.internal.type === `Mdx`) {
+    const value = createFilePath({ node, getNode })
+    createNodeField({
+      name: `slug`,
+      node,
+      value,
+    })
+  }
 }
