@@ -3,9 +3,10 @@ import { Link } from "gatsby";
 
 import Layout from "./layout"
 import SEO from "./seo"
-import { BlogTitleWrapper, BlogTitleOpacity, BlogTitle } from "./blog-detail.styled";
+import { BlogTitleWrapper, BlogTitleOpacity, BlogTitle, Body } from "./blog-detail.styled";
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import Container from "../components/container";
 
 const shortcodes = { Link } // Provide common components here
 
@@ -18,9 +19,13 @@ const Blog = ({ data: { mdx } }) => {
           <BlogTitle>Bu ilk React projem benim</BlogTitle>
         </BlogTitleOpacity>
         <MDXProvider components={shortcodes}>
-        <MDXRenderer>{mdx.body}</MDXRenderer>
         </MDXProvider>
       </BlogTitleWrapper>
+      <Body>
+        <Container>
+          <MDXRenderer>{mdx.body}</MDXRenderer>
+        </Container>
+      </Body>
     </Layout>
   )
 }
