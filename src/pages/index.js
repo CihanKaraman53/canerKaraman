@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components";
 import Slider from "react-slick";
-import { Link } from "gatsby";
+import { StaticQuery, graphql, Link } from "gatsby";
 import "slick-carousel/slick/slick.css"; 
 
 import Layout from "../templates/layout"
@@ -98,168 +98,102 @@ const LoadButtonWrapper = styled.div`
   margin: 60px 0; 
 `
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <StyledLink to={'hello'}>Read More</StyledLink>
+const _renderBlogItem = (mdx) => {
+  return (
+    <Blog>
+          <BlogContent>
+            <TagWrapper>
+              <Tag>#React</Tag>
+              <Tag>#Javascript</Tag>
+            </TagWrapper>
+            <TagWrapper>
+              <PromotionTitle>{mdx.node.frontmatter.title}</PromotionTitle>
+            </TagWrapper>
+            <TagWrapper>
+              <PromotionDescription>{mdx.node.frontmatter.title}</PromotionDescription>
+              <StyledLink to={mdx.node.frontmatter.path}>Read More</StyledLink>
+            </TagWrapper>
+          </BlogContent>
+          <BlogImage>
+            <img alt='javascript' src={'https://i.picsum.photos/id/356/475/305.jpg'} />
+          </BlogImage>
+        </Blog>
+        
+  )
+}
 
-    <Container>
-      <SliderWrapper>
-        <Slider arrows={false} autoplay autoplaySpeed={3500} speed={700}>
-          <>
-          <PromotionWrapper>
-            <PromotionBody>
-              <TagWrapper>
-                <Tag>#React</Tag>
-                <Tag>#Javascript</Tag>
-              </TagWrapper>
-              <TagWrapper>
-                <PromotionTitle>Ilk React Blog'um</PromotionTitle>
-              </TagWrapper>
-              <TagWrapper>
-                <PromotionDescription>
-                  Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit. Maecenas non ante posuere,
-                  aliquet nibh gravida, vulputate quam. Morbi et aliquet metus.
-                  Nunc dapibus cursus lorem, sit amet laoreet eros varius eget.
-                </PromotionDescription>
-              </TagWrapper>
-            </PromotionBody>
-            <PromotionImage>
-              <img alt='javascript' src={'https://i.picsum.photos/id/356/475/305.jpg'} />
-            </PromotionImage>
-          </PromotionWrapper>
-          </>
-          <>
-          <PromotionWrapper>
-            <PromotionBody>
-              <TagWrapper>
-                <Tag>#React</Tag>
-                <Tag>#Javascript</Tag>
-              </TagWrapper>
-              <TagWrapper>
-                <PromotionTitle>Ilk React Blog'um</PromotionTitle>
-              </TagWrapper>
-              <TagWrapper>
-                <PromotionDescription>
-                  Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit. Maecenas non ante posuere,
-                  aliquet nibh gravida, vulputate quam. Morbi et aliquet metus.
-                  Nunc dapibus cursus lorem, sit amet laoreet eros varius eget.
-                </PromotionDescription>
-              </TagWrapper>
-            </PromotionBody>
-            <PromotionImage>
-              <img alt='javascript' src={'https://i.picsum.photos/id/356/475/305.jpg'} />
-            </PromotionImage>
-          </PromotionWrapper>
-          </>
-          <>
-          <PromotionWrapper>
-            <PromotionBody>
-              <TagWrapper>
-                <Tag>#React</Tag>
-                <Tag>#Javascript</Tag>
-              </TagWrapper>
-              <TagWrapper>
-                <PromotionTitle>Ilk React Blog'um</PromotionTitle>
-              </TagWrapper>
-              <TagWrapper>
-                <PromotionDescription>
-                  Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit. Maecenas non ante posuere,
-                  aliquet nibh gravida, vulputate quam. Morbi et aliquet metus.
-                  Nunc dapibus cursus lorem, sit amet laoreet eros varius eget.
-                </PromotionDescription>
-              </TagWrapper>
-            </PromotionBody>
-            <PromotionImage>
-              <img alt='javascript' src={'https://i.picsum.photos/id/356/475/305.jpg'} />
-            </PromotionImage>
-          </PromotionWrapper>
-          </>
-        </Slider>
-        <SearchInput placeholder='Search Blog' buttonTitle='Search'/>
-      </SliderWrapper>
-    </Container>
-    <Container>
-      <Blog>
-        <BlogContent>
+const _renderPromotionItem = (mdx) => {
+  return(
+    <>
+      <PromotionWrapper>
+        <PromotionBody>
           <TagWrapper>
             <Tag>#React</Tag>
             <Tag>#Javascript</Tag>
           </TagWrapper>
           <TagWrapper>
-            <PromotionTitle>Ilk React Blog'um</PromotionTitle>
+            <PromotionTitle>{mdx.node.frontmatter.title}</PromotionTitle>
           </TagWrapper>
           <TagWrapper>
-            <PromotionDescription>
-              Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Maecenas non ante posuere,
-              aliquet nibh gravida, vulputate quam. Morbi et aliquet metus.
-              Nunc dapibus cursus lorem, sit amet laoreet eros varius eget.
-            </PromotionDescription>
-            <StyledLink>Read More</StyledLink>
+            <PromotionDescription>{mdx.node.frontmatter.description}</PromotionDescription>
+            <StyledLink to={mdx.node.frontmatter.path}>Read More</StyledLink>
           </TagWrapper>
-        </BlogContent>
-        <BlogImage>
+        </PromotionBody>
+        <PromotionImage>
           <img alt='javascript' src={'https://i.picsum.photos/id/356/475/305.jpg'} />
-        </BlogImage>
-      </Blog>
-      <Blog>
-        <BlogContent>
-          <TagWrapper>
-            <Tag>#React</Tag>
-            <Tag>#Javascript</Tag>
-          </TagWrapper>
-          <TagWrapper>
-            <PromotionTitle>Ilk React Blog'um</PromotionTitle>
-          </TagWrapper>
-          <TagWrapper>
-            <PromotionDescription>
-              Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Maecenas non ante posuere,
-              aliquet nibh gravida, vulputate quam. Morbi et aliquet metus.
-              Nunc dapibus cursus lorem, sit amet laoreet eros varius eget.
-            </PromotionDescription>
-            <StyledLink>Read More</StyledLink>
-          </TagWrapper>
-        </BlogContent>
-        <BlogImage>
-          <img alt='javascript' src={'https://i.picsum.photos/id/356/475/305.jpg'} />
-        </BlogImage>
-      </Blog>
-      <Blog>
-        <BlogContent>
-          <TagWrapper>
-            <Tag>#React</Tag>
-            <Tag>#Javascript</Tag>
-          </TagWrapper>
-          <TagWrapper>
-            <PromotionTitle>Ilk React Blog'um</PromotionTitle>
-          </TagWrapper>
-          <TagWrapper>
-            <PromotionDescription>
-              Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Maecenas non ante posuere,
-              aliquet nibh gravida, vulputate quam. Morbi et aliquet metus.
-              Nunc dapibus cursus lorem, sit amet laoreet eros varius eget.
-            </PromotionDescription>
-            <StyledLink>Read More</StyledLink>
-          </TagWrapper>
-        </BlogContent>
-        <BlogImage>
-          <img alt='javascript' src={'https://i.picsum.photos/id/356/475/305.jpg'} />
-        </BlogImage>
-      </Blog>
-      <LoadButtonWrapper>
-        <Button title='Load more' />
-      </LoadButtonWrapper>
-    </Container>
-    <Newsletter>
-      
-    </Newsletter>
-  </Layout>
-)
+        </PromotionImage>
+      </PromotionWrapper>
+    </>
+  )
+}
+
+const IndexPage = ({data}) => {
+  const { allMdx } = data;
+  console.log(allMdx);
+
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <Container>
+        <SliderWrapper>
+          <Slider autoplay arrows={false} autoplaySpeed={3500} speed={700}>
+            {allMdx.edges.map((mdx) => (
+              _renderPromotionItem(mdx)
+            ))}
+          </Slider>
+          <SearchInput placeholder='Search Blog' buttonTitle='Search'/>
+        </SliderWrapper>
+      </Container>
+      <Container>
+        {allMdx.edges.map((mdx) => (
+          _renderBlogItem(mdx)
+        ))}
+        <LoadButtonWrapper>
+          <Button title='Load more' />
+        </LoadButtonWrapper>
+      </Container>
+      <Newsletter>
+        
+      </Newsletter>
+    </Layout>
+  )
+}
+
+export const query = graphql`
+  query HomePageQuery {
+    allMdx {
+      edges {
+        node {
+          frontmatter {
+            title
+            path
+            description
+          }
+          id
+        }
+      }
+    }
+  }
+`
 
 export default IndexPage
