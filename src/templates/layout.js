@@ -65,7 +65,7 @@ const MainWrapper = styled.div`
 `;
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
+  useStaticQuery(graphql`
   query SiteTitleQuery {
     site {
       siteMetadata {
@@ -74,7 +74,6 @@ const Layout = ({ children }) => {
     }
   }
 `)
-  console.log('DATA', data);
 
   return (
     <>
