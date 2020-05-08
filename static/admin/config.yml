@@ -12,6 +12,8 @@ collections:
     create: true
     fields:
       - { name: path, label: Path }
+      - { name: tags ,label: Tags, widget: list }
+      - { name: isDisabled, label: Disable, widget: boolean, default: false }
       - { name: date, label: Date, widget: date }
       - { name: title, label: Title }
       - { name: description, label: Description }
